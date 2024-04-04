@@ -1,28 +1,21 @@
+# Use the official Node.js image as the base
 FROM node:latest
 
-# Install system dependencies
+# Install system dependencies required for React Native and Android development
 RUN apt-get update && apt-get install -y \
     curl \
     build-essential \
     git \
-    python
+    python3 \
+    openjdk-11-jdk
 
-# Install Watchman (optional)
+# Install Watchman (optional but recommended for better performance)
 RUN apt-get install -y watchman
 
-# Install Java Development Kit (JDK) for Android development
-RUN apt-get install -y default-jdk
-
-# Install Android Studio (optional)
-# Download Android Studio from official website and install it programmatically
-
-# Set up Android SDK (optional)
-# Set environment variables
-
-# Set up React Native CLI
+# Install React Native CLI globally
 RUN npm install -g react-native-cli
 
-# Set up project directory
+# Set up the project directory
 WORKDIR /app
 
 # Copy package.json and install dependencies
